@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="../css/min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../css/fontawesome-all.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/fontawesome5-overrides.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+         th:insert="blocks/navLeft :: nav">
+    </nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div th:insert="blocks/navTop :: nav"></div>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4">Таблица сотрудников</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Информация</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Логин</th>
+                                    <th>Пароль</th>
+                                    <th>Роль</th>
+                                    <th>Имя в профиле</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="usertable : ${users}">
+                                    <td><a th:utext="${usertable.getUsername()}"
+                                           th:href="'/acc/' + ${usertable.getId()}" style=""></a>
+                                    </td>
+                                    <td th:utext="${usertable.getPassword()}">Accountant</td>
+                                    <td th:utext="${usertable.getRole()}">Tokyo</td>
+                                    <td th:utext="${usertable.getProfileId().getName() + usertable.getProfileId().getSurname() + usertable.getProfileId().getThirdname()}">
+                                        Tokyo
+                                    </td>
+                                    <td>
+                                        <a type="submit" class="btn btn-primary"
+                                           th:href="'/delete/' + ${usertable.id}">Удалить</a>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td><strong>Логин</strong></td>
+                                    <td><strong>Пароль</strong></td>
+                                    <td><strong>Роль</strong></td>
+                                    <td><strong>Имя в профиле</strong></td>
+                                    <td></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+            </div>
+        </footer>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/chart.js"></script>
+<script src="../js/bs-init.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+
+</html>

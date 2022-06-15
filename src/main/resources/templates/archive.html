@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="../css/min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../css/fontawesome-all.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/fontawesome5-overrides.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+         th:insert="blocks/navLeft :: nav">
+    </nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div th:insert="blocks/navTop :: nav"></div>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4">Архив</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Информация</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                             aria-describedby="dataTable_info">
+                            <table class="table my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Аватар</th>
+                                    <th>ФИО</th>
+                                    <th>Категория</th>
+                                    <th>Подразделение</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="usertable : ${users}">
+                                    <td><img class="rounded-circle me-2" width="30" height="30"
+                                             th:src="'/img/avatars/'+ ${usertable.getAvatar()}"></td>
+                                    <td><a th:utext="${usertable.getSurname() + ' ' + usertable.getName() + ' ' +
+                                     usertable.getThirdname()}"
+                                           th:href="'/user/' + ${usertable.getId()}" style=""></a>
+                                    </td>
+                                    <td th:utext="${usertable.getCathegory().getName()}">Accountant</td>
+                                    <td th:utext="${usertable.getAssosiation().getName()}">Tokyo</td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td><strong>Аватар</strong></td>
+                                    <td><strong>ФИО</strong></td>
+                                    <td><strong>Категория</strong></td>
+                                    <td><strong>Подразделение</strong></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+            </div>
+        </footer>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/chart.js"></script>
+<script src="../js/bs-init.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+
+</html>

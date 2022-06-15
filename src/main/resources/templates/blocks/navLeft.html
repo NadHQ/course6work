@@ -1,0 +1,49 @@
+<nav th:fragment="nav">
+    <div class="container-fluid d-flex flex-column p-0"><a
+            class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+        <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
+        <div class="sidebar-brand-text mx-3"><span>Brand</span></div>
+    </a>
+        <hr class="sidebar-divider my-0">
+        <ul class="navbar-nav text-light" id="accordionSidebar">
+            <li class="nav-item">
+                <a class="nav-link" href="/profile">
+                    <i class="far fa-plus-square icons"></i><span>Профиль</span>
+                </a>
+            </li>
+            <li th:if="${role == 'ADMIN'}" class="nav-item">
+                <a class="nav-link" href="/admin/panel">
+                    <i class="far fa-plus-square icons"></i><span>Админ-панель</span>
+                </a>
+            </li>
+            <li th:if="${role == 'ADMIN'}" class="nav-item">
+                <a class="nav-link" href="/add/user">
+                    <i class="far fa-plus-square icons"></i><span>Добавить аккаунт</span>
+                </a>
+            </li>
+            <li th:if="${role == 'SOMEROLE'}" class="nav-item">
+                <a class="nav-link" href="/table">
+                    <i class="far fa-plus-square icons"></i><span>Таблица сотрудников</span>
+                </a>
+            </li>
+            <li th:if="${role == 'SOMEROLE'}" class="nav-item">
+                <a class="nav-link" href="/archive">
+                    <i class="far fa-plus-square icons"></i><span>Архив</span>
+                </a>
+            </li>
+            <li th:if="${role == 'SOMEROLE'}" class="nav-item">
+                <a class="nav-link" href="/bids">
+                    <i class="far fa-plus-square icons"></i><span>Заявки</span>
+                </a>
+            </li>
+            <li th:if="${role == 'SOMEROLE'}" class="nav-item">
+                <a class="nav-link" href="/add/customer">
+                    <i class="far fa-plus-square icons"></i><span>Добавить сотрудника</span>
+                </a>
+            </li>
+        </ul>
+        <div class="text-center d-none d-md-inline">
+            <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+        </div>
+    </div>
+</nav>

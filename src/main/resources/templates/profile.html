@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Profile - Brand</title>
+    <link rel="stylesheet" href="../css/min.css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="../css/fontawesome-all.css">
+    <link rel="stylesheet" href="../css/font-awesome.css">
+    <link rel="stylesheet" href="../css/fontawesome5-overrides.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0"
+         th:insert="blocks/navLeft :: nav">
+    </nav>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div th:insert="blocks/navTop :: nav"></div>
+            <div class="container-fluid">
+                <h3 class="text-dark mb-4">Профиль</h3>
+                <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <div class="card mb-3">
+                            <div class="card-body text-center shadow"><img class="rounded-circle mb-3 mt-4"
+                                                                           th:src="'/img/dogs/'+ ${profilePicture}"
+                                                                           width="160"
+                                                                           height="160">
+                                <div class="mb-3">
+                                    <form action="/changephoto" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="file" class="btn btn-primary">
+                                        <button class="btn btn-primary btn-sm" type="submit">Change Photo</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4"></div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="row mb-3 d-none">
+                            <div class="col">
+                                <div class="card textwhite bg-primary text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <p class="m-0">Peformance</p>
+                                                <p class="m-0"><strong>65.2%</strong></p>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                        </div>
+                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since
+                                            last month</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="card textwhite bg-success text-white shadow">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col">
+                                                <p class="m-0">Peformance</p>
+                                                <p class="m-0"><strong>65.2%</strong></p>
+                                            </div>
+                                            <div class="col-auto"><i class="fas fa-rocket fa-2x"></i></div>
+                                        </div>
+                                        <p class="text-white-50 small m-0"><i class="fas fa-arrow-up"></i>&nbsp;5% since
+                                            last month</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold">Общая информация</p>
+                                    </div>
+                                    <div class="card-body" th>
+                                        <form>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label"
+                                                                             for="first_name"><strong>Имя</strong><br></label>
+                                                        <p
+                                                                disabled th:text="${first_name}"
+                                                                class="form-control" type="text" id="first_name"
+                                                                placeholder="John" name="first_name"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Фамилия</strong></label>
+                                                        <p th:text="${second_name}"
+                                                           class="form-control" type="text" id="last_name"
+                                                           placeholder="Doe" name="secondname"></div>
+                                                </div>
+                                                <div class="col"><label class="form-label">Отчество</label>
+                                                    <p
+                                                            th:text="${third_name}" class="form-control" type="text"
+                                                            name="third_name"
+                                                            placeholder="Vladimirovich"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><label class="form-label">Дата рождения</label>
+                                                    <p
+                                                            th:text="${birth}" class="form-control" type="text"
+                                                            name="birth"></div>
+                                                <div class="col"><label class="form-label">Гражданство</label>
+                                                    <p
+                                                            th:text="${citizenship}"
+                                                            class="form-control" type="text" name="citizenship"></div>
+                                                <div class="col"><label class="form-label">Номер пасспорта</label>
+                                                    <p th:text="${passnumber}"
+                                                       class="form-control" type="text" name="passnumber"></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold">Рабочая информация</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label"
+                                                                             for="first_name"><strong>Должность</strong><br></label>
+                                                        <p th:text="${cathegory}"
+                                                           class="form-control" type="text" id="first_name"
+                                                           placeholder="John" name="cathegory"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Подразделение</strong></label>
+                                                        <p th:text="${association}"
+                                                           class="form-control" type="text" id="last_name"
+                                                           placeholder="Doe" name="association"></div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col"><label class="form-label">Рабочий телефон</label>
+                                                    <p th:text="${workphone}"
+                                                       class="form-control" type="text" name="workphone"></div>
+                                                <div class="col"><label class="form-label">Рабочий E-mail</label>
+                                                    <p th:text="${workmail}"
+                                                       class="form-control" type="text" name="workmail"></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card shadow">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold">Контактные данные</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3"><label class="form-label" for="address"><strong>Адресс
+                                                прописки</strong></label>
+                                                <p class="form-control" type="text" th:text="${address}"
+                                                   id="address"
+                                                   placeholder="Sunset Blvd, 38"
+                                                   name="address"></div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="city"><strong>Мобильный
+                                                        телефон</strong></label>
+                                                        <p class="form-control" type="text" th:text="${mobilePhone}"
+                                                           id="city" placeholder="USA"
+                                                           name="mobilePhone"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="mb-3"><label class="form-label" for="city"><strong>E-mail</strong><br></label>
+                                                        <p th:text="${email}"
+                                                           class="form-control" type="text" id="city"
+                                                           placeholder="Los Angeles" name="email"></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="card shadow">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold">Действия</p>
+                                    </div>
+                                    <div class="card-body">
+                                            <div class="mb-3"></div>
+                                            <div class="row">
+                                                <div class="col offset-xxl-0" th:if="${!pensionExist.equals('exist')}">
+                                                    <form action="/pension" method="post">
+                                                        <div>
+                                                            <button class="btn btn-primary d-xxl-flex" type="submit">
+                                                                Подать заявление на увольнение
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!--                                                <div class="col">-->
+                                                <!--                                                    <form></form>-->
+                                                <!--                                                </div>-->
+                                                <div class="col" th:if="${!weekendExist.equals('exist')}">
+                                                    <form action="/weekend" method="post">
+                                                        <button class="btn btn-primary" type="submit">Подать заявление
+                                                            на отпуск
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow mb-5"></div>
+            </div>
+        </div>
+        <footer class="bg-white sticky-footer">
+            <div class="container my-auto">
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+            </div>
+        </footer>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+</div>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/chart.js"></script>
+<script src="../js/bs-init.js"></script>
+<script src="../js/theme.js"></script>
+</body>
+
+</html>
